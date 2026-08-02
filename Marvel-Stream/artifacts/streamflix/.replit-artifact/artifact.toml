@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "StreamFlix"
+description = "A mobile streaming app for watching movies and TV shows. Users can browse trending and popular movies, search by title or genre, view movie details, and watch films via embedded streaming sources. Includes Marvel movies, recent releases, and a favorites system."
+version = "1.0.0"
+id = "artifacts/streamflix"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 25460
+
+[services.development]
+run = "pnpm --filter @workspace/streamflix run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/streamflix", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/streamflix", "run", "serve" ]
+
+[services.env]
+PORT = "25460"
+BASE_PATH = "/"
